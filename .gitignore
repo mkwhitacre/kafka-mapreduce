@@ -1,0 +1,16 @@
+.jbundler
+Jarfile*
+.classpath
+.settings
+.project
+target
+build
+test-output
+.surefire-*
+.DS_Store
+.fbExcludeFilterFile
+derby.log
+.idea
+*.iml
+nbactions.xml
+dependency-reduced-pom.xml
