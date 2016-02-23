@@ -42,6 +42,7 @@ under the License.
     <hadoop.version>2.5.2</hadoop.version>
     <avro.classifier>hadoop2</avro.classifier>
     <kafka.version>0.9.0.0</kafka.version>
+    <scala.version>2.10.3</scala.version>
   </properties>
 
     <dependencies>
@@ -50,6 +51,16 @@ under the License.
         <groupId>org.apache.kafka</groupId>
         <artifactId>kafka-clients</artifactId>
         <version>${kafka.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.kafka</groupId>
+        <artifactId>kafka_2.10</artifactId>
+        <version>${kafka.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.scala-lang</groupId>
+        <artifactId>scala-library</artifactId>
+        <version>${scala.version}</version>
       </dependency>
 
       <dependency>
@@ -174,13 +185,14 @@ under the License.
        <artifactId>hadoop-annotations</artifactId>
        <version>${hadoop.version}</version>
      </dependency>
-   </dependencies>
+    </dependencies>
 
   <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.3</version>
       </plugin>
     </plugins>
 
@@ -200,6 +212,10 @@ under the License.
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.18.1</version>
           <configuration>
+            <includes>
+              <include>**/ClusterTests.java</include>
+              <include>**/StandaloneTests.java</include>
+            </includes>
             <argLine>-Xmx2G -XX:PermSize=512m -XX:MaxPermSize=1G -Dfile.encoding=UTF-8</argLine>
           </configuration>
         </plugin>
